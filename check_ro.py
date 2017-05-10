@@ -14,7 +14,6 @@ proc = subprocess.Popen([cmd,], shell=True, stdout=subprocess.PIPE)
 for line in iter(proc.stdout.readline,''):
         if line.rstrip().partition(' ')[0] not in ignorepaths and line.rstrip().partition(':')[0] not in ignorepaths:
                 output = 'CRITICAL\ detected read only file system ' + line.rstrip()
-                print(line.rstrip().partition(' ')[0])
                 print(output)
                 sys.exit(2)
         else:
